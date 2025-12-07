@@ -2,13 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -48,25 +47,50 @@
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.suri = {
-    isNormalUser = true;
-    description = "suri";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	helix
-git
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    helix
+    git
+    btop
+    unzip
+    gparted
+    fzf
+    wget
+    gcc
+    git
+    vim
+    libnotify
+    gnupg
+    xfce.thunar
+    vulkan-tools
+    lm_sensors
+    #stuff for the thing
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+    #swww
+    inputs.swww.packages.${pkgs.system}.swww
+
+    wl-clipboard
+    screen
+    networkmanagerapplet
+    pamixer
+    playerctl
+    pavucontrol
+    lshw
+    gnumake42
+    clang-tools
+    openssl
+
   ];
+
+  variables = {
+    # for compiling openssl for nixos, should refactor into a diff file later
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -81,19 +105,76 @@ git
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    ports = [22];
+    ports = [ 22 ];
     settings = {
       PasswordAuthentication = true;
       # allows all users
       AllowedUsers = null;
       UseDns = true;
       PermitRootLogin = "prohibit-password";
-      
+
     };
   };
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    backupFileExtension = "backup";
+    users = {
+      # Import your home-manager configuration
+      suri = import ../../users/suri/home.nix;
+    };
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.suri = {
+    isNormalUser = true;
+    description = "suri";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [ ];
+  };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
+
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true; # see the note above
+
+  programs = {
+    nano.enable = true;
+    zsh.enable = true;
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      package =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    };
+
+    # allows normal binaries to run
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs;
+        [
+
+        ];
+    };
+
+  };
+
+  nix.settings.experimental-features = "nix-command flakes";
+
+  users.defaultUserShell = pkgs.zsh;
+
+  security.polkit.enable = true;
+
+  programs.dconf.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
