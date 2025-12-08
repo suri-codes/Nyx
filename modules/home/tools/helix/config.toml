@@ -1,0 +1,36 @@
+theme = "theme-trans"
+
+[editor]
+line-number = "relative"
+end-of-line-diagnostics = "hint"
+color-modes = true
+completion-trigger-len = 1
+completion-timeout = 5
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.auto-save]
+focus-lost = true
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-type", "total-line-numbers", "file-encoding"]
+right = ["version-control", "position", "selections", "primary-selection-length", "position-percentage", "spacer", "workspace-diagnostics"]
+separator = "│"
+
+[editor.statusline.mode]
+normal = "NORMAL"
+insert = "INSERT"
+select = "SELECT"
+
+[keys.normal]
+X = "extend_line_above"
+ret = "goto_word"

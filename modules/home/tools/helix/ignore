@@ -1,0 +1,13 @@
+!.notes/
+!.gitignore
+!.gitmodules
+!.github/
+!.devcontainer/
+!.env*
+!.sqlx/
+!.cargo/
+!.config/
+!puzzles/*
+!examples/*
+!inputs/*
+target/

@@ -1,1 +1,1 @@
-{ imports = [ ./oh-my-posh ]; }
+{ ... }: { imports = [ ./oh-my-posh ]; }

@@ -1,16 +1,18 @@
 { lib, pkgs, config, ... }:
-
 with lib;
-let cfg = config.programs.aerospace;
+let cfg = config.nyx.aerospace;
 in {
-  options.programs.aerospace = {
+  options.nyx.aerospace = {
     enable = mkEnableOption "AeroSpace window manager";
   };
 
   config = mkIf (cfg.enable && pkgs.stdenv.isDarwin) {
     home.packages = [ pkgs.aerospace ];
 
-    home.file.".aerospace.toml".source = ./aerospace.toml;
+    "${config.home.homeDirectory}/.aerospace.toml".source =
+
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/Nyx/modules/home/wm/aerospace/aerospace.toml";
 
     launchd.agents.aerospace = {
       enable = true;

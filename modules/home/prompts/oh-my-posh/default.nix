@@ -1,10 +1,14 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
-
-let cfg = config.programs.oh-my-posh;
+let cfg = config.nyx.oh-my-posh;
 in {
-  config = mkIf (cfg.enable) { home.pakages = [ pkgs.oh-my-posh ]; };
 
-  home.file.".config/oh-my-posh/theme.toml".source = ./mypure.omp.toml;
+  options.nyx.oh-my-posh = { enable = mkEnableOption "Oh-My-Posh"; };
+
+  config = mkIf (cfg.enable) {
+    home.packages = [ pkgs.oh-my-posh ];
+
+    home.file.".config/oh-my-posh/theme.toml".source = ./mypure.omp.toml;
+  };
 
 }

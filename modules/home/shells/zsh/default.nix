@@ -1,8 +1,7 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 with lib;
-
 let
-  cfg = config.programs.zsh;
+  cfg = config.nyx.zsh;
   zsh_history_fix = pkgs.writeShellScriptBin "zsh_history_fix" ''
     mv ~/.zsh_history ~/.zsh_history_bad
     strings ~/.zsh_history_bad > ~/.zsh_history
@@ -12,14 +11,10 @@ let
   '';
 in {
 
-  options.programs.zsh = { enable = mkEnableOption "Zsh"; };
+  options.nyx.zsh = { enable = mkEnableOption "Zsh"; };
 
   config = mkIf (cfg.enable) {
-
     programs.zoxide.enable = true;
-
-    home.file.".config/oh-my-posh/theme.toml".source = ./mypure.omp.toml;
-
     home.packages = with pkgs; [ fd eza zsh_history_fix ];
     programs.zsh = {
       enable = true;

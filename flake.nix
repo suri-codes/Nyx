@@ -70,7 +70,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.suri = import ./users/suri/Deadalus.nix;
+                users.suri = import ./users/suri/Daedalus.nix;
                 backupFileExtension = "backup";
               };
             }

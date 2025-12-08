@@ -1,8 +1,8 @@
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.programs.ghostty;
+let cfg = config.nyx.ghostty;
 in {
-  options.programs.aerospace = { enable = mkEnableOption "Ghostty Terminal"; };
+  options.nyx.ghostty = { enable = mkEnableOption "Ghostty Terminal"; };
 
   config = mkIf (cfg.enable && pkgs.stdenv.isDarwin) {
     home.packages = [ pkgs.ghostty-bin ];

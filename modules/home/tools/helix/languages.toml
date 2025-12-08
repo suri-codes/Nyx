@@ -1,0 +1,89 @@
+# --- Language Servers ---
+
+[language-server.ltex]
+command = "ltex-ls-plus"
+
+[language-server.ltex.config.ltex.dictionary]
+"en-US" = ["ewwe", "flaberrasted"]
+
+[language-server.ltex.config.ltex.disabledRules]
+"en-US" = ["WHITESPACE_RULE"]
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.texlab]
+command = "texlab"
+
+[language-server.texlab.config.texlab.build]
+onSave = true
+forwardSearchAfter = true
+executable = "latexmk"
+args = ["-pdf", "-interaction=nonstopmode", "-synctex=1", "-shell-escape", "%f"]
+
+[language-server.texlab.config.texlab.forwardSearch]
+executable = "zathura"
+args = ["--synctex-forward", "%l:%c:%f", "%p"]
+
+[language-server.texlab.config.texlab.chktex]
+onOpenAndSave = true
+onEdit = true
+
+[language-server.codebook]
+command = "codebook"
+args = ["serve"]
+
+[language-server.gdscript]
+command = "nc"
+args = ["127.0.0.1", "6005"]
+
+# --- Languages ---
+
+[[language]]
+name = "typst"
+auto-format = true
+language-servers = ["tinymist"]
+
+[language.formatter]
+command = "typstyle"
+
+[[language]]
+name = "latex"
+language-servers = ["texlab", "ltex-ls-plus"]
+
+[[language]]
+name = "nix"
+auto-format = true
+
+[language.formatter]
+command = "nixfmt"
+
+[[language]]
+name = "svelte"
+auto-format = true
+language-servers = ["svelteserver", "tailwindcss-language-server", "codebook"]
+
+[language.formatter]
+command = "dprint"
+args = ["fmt", "--stdin", "svelte"]
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "gdscript"
+language-id = "gdscript"
+language-servers = ["gdscript"]
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer", "codebook"]
+
+[[language]]
+name = "markdown"
+language-servers = ["codebook", "markdown-oxide"]
