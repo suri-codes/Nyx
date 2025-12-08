@@ -9,6 +9,8 @@ in {
   #
   imports = [
 
+    ../../modules/home
+
     ../../modules/home/prompts/oh-my-posh
     ../../modules/home/shells/zsh
     ../../modules/home/term/ghostty

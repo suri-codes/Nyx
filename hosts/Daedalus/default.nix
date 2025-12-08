@@ -9,10 +9,6 @@
 
   fonts.packages = [ pkgs.monaspace ];
 
-  
-
-  
-
   homebrew = {
     enable = true;
     brews = [
@@ -20,7 +16,6 @@
       "mas"
       "borders"
       "libiconv"
-      "oh-my-posh"
       "ifstat"
       "libiconv"
       # for twizzler

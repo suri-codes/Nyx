@@ -1,0 +1,100 @@
+{ lib, pkgs, ... }:
+with lib;
+
+let
+  cfg = config.programs.zsh;
+  zsh_history_fix = pkgs.writeShellScriptBin "zsh_history_fix" ''
+    mv ~/.zsh_history ~/.zsh_history_bad
+    strings ~/.zsh_history_bad > ~/.zsh_history
+    fc -R ~/.zsh_history
+    rm ~/.zsh_history_bad
+
+  '';
+in {
+
+  options.programs.zsh = { enable = mkEnableOption "Zsh"; };
+
+  config = mkIf (cfg.enable) {
+
+    programs.zoxide.enable = true;
+
+    home.file.".config/oh-my-posh/theme.toml".source = ./mypure.omp.toml;
+
+    home.packages = with pkgs; [ fd eza zsh_history_fix ];
+    programs.zsh = {
+      enable = true;
+      autocd = true;
+      autosuggestion.enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+
+      # TODO: these need to be fixed lmao
+      shellAliases = {
+        darl = "sudo darwin-rebuild switch --flake /Users/suri/dev/dots";
+        darling = ''
+          cd /Users/suri/dev/dots && git add -A && git commit -m "." && sudo darwin-rebuild switch --flake /Users/suri/dev/dots && git push'';
+
+        dots = "z ~/dev/dots";
+        fcd = ''
+          cd "$(find ~/coding/ ~/storage/ -type d -not \( -path "*/.git/*" -o -path "*/target/*" -o -path "*/.venv/*" -o -path "*/node_modules/*" -o -path "*/venv/*" -o -path "*/build/*" -o -path "*/.*/*" \) -print 2>/dev/null | fzf)" '';
+
+        l = "exa";
+        ls = "exa";
+
+        lg = "lazygit";
+
+        cat = "bat";
+
+        zt = "zathura";
+
+        tars =
+          "cd /Users/suri/dev/personal/tars/tars-tui && cargo run --release";
+
+        ezk =
+          " /Users/suri/dev/personal/Emergence/target/release/emergence_cli";
+      };
+
+      initContent = ''
+        eval `ssh-agent` &> /dev/null
+        ssh-add ~/.ssh/github &> /dev/null
+
+        eval "$(zoxide init zsh)"
+        # eval "$(starship init zsh)"
+
+        function y() {
+            local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+            yazi "$@" --cwd-file="$tmp"
+            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+                    cd -- "$cwd"
+            fi
+            rm -f -- "$tmp"
+        }
+
+        function tz() {
+            if [ -z "$1" ]; then
+                echo "Usage: tz <file.typ>"
+                return 1
+            fi
+
+            input_file="$1"
+            output_file="''${input_file%.typ}.pdf"  # Replace .typ with .pdf
+
+            typst watch "$input_file" "$output_file" &  # Watch and compile Typst file
+            sleep 1  # Give Typst some time to generate the PDF
+            open "$output_file"  # Open the generated PDF
+        }
+
+        export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+        export PATH="/Users/suri/.cargo/bin:$PATH"
+
+        if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+          # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/di4am0nd.omp.json)"
+          # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/pure.omp.json)"
+          eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.toml)"
+        fi
+
+      '';
+    };
+  };
+
+}
