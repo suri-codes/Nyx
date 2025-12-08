@@ -1,10 +1,12 @@
 {
 
-  imports = [ ./common.nix ../../modules/home/wm/aerospace ];
+  imports = [ ./common.nix ];
 
   nyx.aerospace.enable = true;
   nyx.ghostty.enable = true;
-  nyx.oh-my-posh.enable = true;
-  nyx.zsh.enable = true;
+  nyx.helix.enable = true;
+  nyx.zellij.enable = true;
+  nyx.orbstack.enable = true;
+  
 
 }

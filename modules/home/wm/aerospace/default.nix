@@ -5,12 +5,10 @@ in {
   options.nyx.aerospace = {
     enable = mkEnableOption "AeroSpace window manager";
   };
-
   config = mkIf (cfg.enable && pkgs.stdenv.isDarwin) {
     home.packages = [ pkgs.aerospace ];
 
-    "${config.home.homeDirectory}/.aerospace.toml".source =
-
+    home.file.".aerospace.toml".source =
       config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/Nyx/modules/home/wm/aerospace/aerospace.toml";
 

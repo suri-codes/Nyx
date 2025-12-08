@@ -55,6 +55,8 @@ in {
 
         eval "$(zoxide init zsh)"
         # eval "$(starship init zsh)"
+        #
+        eval "$(/opt/homebrew/bin/brew shellenv)"
 
         function y() {
             local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -83,10 +85,11 @@ in {
         export PATH="/Users/suri/.cargo/bin:$PATH"
 
         if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-          # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/di4am0nd.omp.json)"
-          # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/pure.omp.json)"
-          eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.toml)"
-        fi
+            # WE USE ${pkgs.oh-my-posh} HERE
+            # This ensures we use the exact binary installed by Nix
+            eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml)"
+          fi
+
 
       '';
     };

@@ -1,4 +1,6 @@
-{ pkgs, config, outputs, ... }: {
+{ pkgs, outputs, ... }: {
+
+  imports = [ ../../modules/system/fonts.nix ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -7,45 +9,35 @@
 
   system.primaryUser = "suri";
 
-  fonts.packages = [ pkgs.monaspace ];
-
   homebrew = {
     enable = true;
     brews = [
       "sketchybar"
       "mas"
-      "borders"
+      # terminal handling stuff
       "libiconv"
+      # nmcli kinda
       "ifstat"
-      "libiconv"
-      # for twizzler
+      # spicetify stuff
+      "spicetify-cli"
+
+      # TODO: for twizzler, make a flake for ts
       "qemu"
       "e2fsprogs"
-      "spicetify-cli"
       "ninja"
 
     ];
     casks = [
       "ghostty@tip"
-      "google-chrome"
       "db-browser-for-sqlite"
-
-      "notion"
-      "orbstack"
       "zen"
       "discord"
       "slack"
       "zulip"
       "raycast"
-      "blender"
-      "godot"
       "zoom"
       "soduto"
-      "font-hack-nerd-font"
-      "font-sf-pro"
-      "font-fira-code-nerd-font"
       "spotify"
-      "obsidian"
       "mac-mouse-fix"
     ];
     masApps = { "whatsapp" = 310633997; };
@@ -74,17 +66,17 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 6;
-
   security.pam.services.sudo_local.touchIdAuth = true;
-
-  # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
 
   users.users.suri = {
     name = "suri";
     home = "/Users/suri";
   };
+
+  # The platform the configuration will be used on.
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 6;
 }

@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     settings.user = {
@@ -6,7 +6,7 @@
       email = "suri312006@gmail.com";
 
     };
-
     lfs = { enable = true; };
   };
+  home.packages = [ pkgs.lazygit ];
 }

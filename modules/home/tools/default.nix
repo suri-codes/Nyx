@@ -1,18 +1,17 @@
 { pkgs, lib, ... }: {
 
-  imports = [ ./helix ./zellij ];
+  imports = [ ./helix ./zellij ./git.nix ./btop.nix ];
 
   home.sessionVariables.LIBRARY_PATH =
     "${lib.makeLibraryPath [ pkgs.libiconv ]}\${LIBRARY_PATH:+:$LIBRARY_PATH}";
 
   home.packages = with pkgs; [
 
+    ripgrep
+    bat
     fastfetch
-    zoxide
     zstd
     coreutils-prefixed
-    lazygit
-    docker
     yazi
     fzf
     github-cli
@@ -21,8 +20,6 @@
     just
     typst
     tokei
-    ripgrep
-    bat
 
   ];
 
