@@ -25,27 +25,43 @@
 
   # Flake outputs
   outputs = { self, darwin, nixpkgs, home-manager, rust-overlay, ... }@inputs:
-    let
-      overlays = [ rust-overlay.overlays.default ];
-      mkPkgs = system:
-        import nixpkgs {
-          inherit system overlays;
-          config.allowUnfree = true;
-        };
-
+    let overlays = [ rust-overlay.overlays.default ];
     in {
-
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
+      # `sudo nixos-rebuild switch --flake .#Khaos`
       nixosConfigurations = {
         Khaos = nixpkgs.lib.nixosSystem {
-          modules = [ ./hosts/Khaos { nixpkgs.overlays = overlays; } ];
+          specialArgs = {
+            inherit inputs;
+            outputs = self;
+          };
+          modules = [
+            ./hosts/Khaos
+
+            { nixpkgs.overlays = overlays; }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.suri = import ./users/suri/Khaos.nix;
+                backupFileExtension = "backup";
+              };
+            }
+
+          ];
         };
       };
 
+      # `darwin-rebuild switch --flake .#Daedalus`
       darwinConfigurations = {
         Daedalus = darwin.lib.darwinSystem {
-          system = "aarch64-darwin"; # or x86_64-darwin
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit inputs;
+            outputs = self;
+          };
           modules = [
             ./hosts/Daedalus
             { nixpkgs.overlays = overlays; }
@@ -54,24 +70,11 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.suri = import ./users/suri;
+                users.suri = import ./users/suri/Deadalus.nix;
                 backupFileExtension = "backup";
-
               };
             }
           ];
-        };
-      };
-
-      homeConfigurations = {
-        "suri@Daedalus" = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "aarch64-darwin";
-          modules = [ ./users/suri/Daedalus.nix ];
-        };
-
-        "suri@Khaos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "x86_64-linux";
-          modules = [ ./users/suri/Khaos.nix ];
         };
       };
 

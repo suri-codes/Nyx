@@ -122,22 +122,22 @@
     setSocketVariable = true;
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    backupFileExtension = "backup";
-    users = {
-      # Import your home-manager configuration
-      suri = import ../../users/suri/home.nix;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = { inherit inputs outputs; };
+  #   backupFileExtension = "backup";
+  #   users = {
+  #     # Import your home-manager configuration
+  #     suri = import ../../users/suri/home.nix;
+  #   };
+  # };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.suri = {
-    isNormalUser = true;
-    description = "suri";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
-  };
+  # # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.suri = {
+  #   isNormalUser = true;
+  #   description = "suri";
+  #   extraGroups = [ "networkmanager" "wheel" ];
+  #   packages = with pkgs; [ ];
+  # };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
 
