@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
 
   OOS = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -6,15 +6,18 @@ let
 in {
 
   # imports = [ ./apps ];
+  #
+  imports = [
 
-  home.packages = [
-
-    pkgs.fastfetch
+    ../../modules/home/wm/aerospace
+    ../../modules/home/prompts/oh-my-posh
+    ../../modules/home/shells/zsh
+    ../../modules/home/term/ghostty
+    ../../modules/home/tools
 
   ];
 
   home.file = {
-
     # REMEMBER to lift the config file out, and refacts this after kenric puts his config
     # on the public internet, study and refactor my dotfiles!
     "Library/Application Support/com.mitchellh.ghostty".source =

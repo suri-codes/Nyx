@@ -1,0 +1,125 @@
+initial-command = "/etc/profiles/per-user/suri/bin/suri_zellij_session_helper"
+
+custom-shader = ./shaders/cursor_blaze.glsl
+
+# custom-shader = ./shaders/starfield-colors.glsl
+
+# funny 
+# custom-shader = ./shaders/bettercrt.glsl 
+
+# Im hacker
+# custom-shader = ./shaders/inside-the-matrix.glsl 
+
+
+# really cool
+# custom-shader = ./shaders/glow-rgbsplit-twitchy.glsl
+# custom-shader = ./shaders/glow.glsl
+# custom-shader = ./shaders/tunnel.glsl
+
+
+
+
+
+
+
+# custom-shader-animation = always
+
+font-family = ""
+
+font-family = "Monaspace Krypton SemiBold"
+
+font-family-bold = "Monaspace Neon SemiBold"
+
+font-family-italic = "Monaspace Argon SemiBold"
+
+font-family-bold-italic = "Monaspace Neon SemiBold"
+
+cursor-style = "bar"
+
+font-feature = "calt"
+font-feature = "clig"
+font-feature = "liga"
+font-feature = "dlig"
+font-feature = "ss01"
+font-feature = "ss02"
+font-feature = "ss03"
+font-feature = "ss04"
+font-feature = "ss05"
+font-feature = "ss06"
+font-feature = "ss07"
+font-feature = "ss08"
+
+font-size = "14"
+
+mouse-hide-while-typing = true
+
+# background-opacity = 0.8
+
+# background-blur = true
+
+window-padding-x = 5,5
+
+window-padding-y = 5,5
+
+# window-decoration = false
+
+# Disable conflicting Ghostty defaults to allow Zellij keybinds
+
+
+# keybind = clear
+
+# keybind = super+shift+,=reload
+
+# Ghostty uses super+k for clear_screen, Zellij uses it for MoveFocus up
+keybind = super+k=unbind
+keybind = super+d=unbind
+keybind = super+t=unbind
+# Ghostty uses super+n for new_window, Zellij uses it for NewPane
+keybind = super+n=unbind
+# Ghostty uses super+left_bracket for goto_split:previous, Zellij uses Super+[ for PreviousSwapLayout
+keybind = super+left_bracket=unbind
+# Ghostty uses super+right_bracket for goto_split:next, Zellij uses Super+] for NextSwapLayout
+keybind = super+right_bracket=unbind
+# Ghostty uses super+up for jump_to_prompt:-1, Zellij uses it for MoveFocus up
+keybind = super+up=unbind
+# Ghostty uses super+down for jump_to_prompt:1, Zellij uses it for MoveFocus down
+keybind = super+down=unbind
+# Ghostty uses super+right for text:\x05, Zellij uses it for MoveFocusOrTab right
+keybind = super+right=unbind
+# Ghostty uses super+left for text:\x01, Zellij uses it for MoveFocusOrTab left
+keybind = super+left=unbind
+# Ghostty tab navigation conflicts with Zellij GoToTab
+# keybind = super+one=unbind
+# keybind = super+two=unbind
+# keybind = super+three=unbind
+# keybind = super+four=unbind
+# keybind = super+five=unbind
+# keybind = super+six=unbind
+# keybind = super+seven=unbind
+# keybind = super+eight=unbind
+# keybind = super+nine=unbind
+
+keybind = super+digit_1=unbind
+keybind = super+digit_2=unbind
+keybind = super+digit_3=unbind
+keybind = super+digit_4=unbind
+keybind = super+digit_5=unbind
+keybind = super+digit_6=unbind
+keybind = super+digit_7=unbind
+keybind = super+digit_8=unbind
+keybind = super+digit_9=unbind
+
+keybind = super+1=unbind
+keybind = super+2=unbind
+keybind = super+3=unbind
+keybind = super+4=unbind
+keybind = super+5=unbind
+keybind = super+6=unbind
+keybind = super+7=unbind
+keybind = super+8=unbind
+keybind = super+9=unbind
+# theme = "gruvbox-material"
+# theme = GruvboxDarkHard
+# theme = Monokai Remastered
+# theme = Kanagawa Dragon
+theme = ayu

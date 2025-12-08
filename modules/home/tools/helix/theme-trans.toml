@@ -1,0 +1,5 @@
+inherits = "gruvbox_dark_hard"
+
+
+"ui.background" = { bg = "#0B0E14" }
+"ui.statusline" = { bg = "#0B0E14" }
