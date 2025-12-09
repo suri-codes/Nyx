@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.nyx.zsh;
@@ -9,13 +14,20 @@ let
     rm ~/.zsh_history_bad
 
   '';
-in {
+in
+{
 
-  options.nyx.zsh = { enable = mkEnableOption "Zsh"; };
+  options.nyx.zsh = {
+    enable = mkEnableOption "Zsh";
+  };
 
   config = mkIf (cfg.enable) {
     programs.zoxide.enable = true;
-    home.packages = with pkgs; [ fd eza zsh_history_fix ];
+    home.packages = with pkgs; [
+      fd
+      eza
+      zsh_history_fix
+    ];
     programs.zsh = {
       enable = true;
       autocd = true;
@@ -26,12 +38,10 @@ in {
       # TODO: these need to be fixed lmao
       shellAliases = {
         darl = "sudo darwin-rebuild switch --flake /Users/suri/dev/dots";
-        darling = ''
-          cd /Users/suri/dev/dots && git add -A && git commit -m "." && sudo darwin-rebuild switch --flake /Users/suri/dev/dots && git push'';
+        darling = ''cd /Users/suri/dev/dots && git add -A && git commit -m "." && sudo darwin-rebuild switch --flake /Users/suri/dev/dots && git push'';
 
         dots = "z ~/dev/dots";
-        fcd = ''
-          cd "$(find ~/coding/ ~/storage/ -type d -not \( -path "*/.git/*" -o -path "*/target/*" -o -path "*/.venv/*" -o -path "*/node_modules/*" -o -path "*/venv/*" -o -path "*/build/*" -o -path "*/.*/*" \) -print 2>/dev/null | fzf)" '';
+        fcd = ''cd "$(find ~/coding/ ~/storage/ -type d -not \( -path "*/.git/*" -o -path "*/target/*" -o -path "*/.venv/*" -o -path "*/node_modules/*" -o -path "*/venv/*" -o -path "*/build/*" -o -path "*/.*/*" \) -print 2>/dev/null | fzf)" '';
 
         l = "exa";
         ls = "exa";
@@ -42,11 +52,9 @@ in {
 
         zt = "zathura";
 
-        tars =
-          "cd /Users/suri/dev/personal/tars/tars-tui && cargo run --release";
+        tars = "cd /Users/suri/dev/personal/tars/tars-tui && cargo run --release";
 
-        ezk =
-          " /Users/suri/dev/personal/Emergence/target/release/emergence_cli";
+        ezk = " /Users/suri/dev/personal/Emergence/target/release/emergence_cli";
       };
 
       initContent = ''
@@ -55,8 +63,12 @@ in {
 
         eval "$(zoxide init zsh)"
         # eval "$(starship init zsh)"
-        #
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        ${lib.optionalString pkgs.stdenv.isDarwin ''
+          if [ -f /opt/homebrew/bin/brew ]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+            export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+          fi
+        ''}
 
         function y() {
             local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -81,8 +93,7 @@ in {
             open "$output_file"  # Open the generated PDF
         }
 
-        export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
-        export PATH="/Users/suri/.cargo/bin:$PATH"
+        export PATH="/Users/suri/.cargo/bin:$PATH" &> /dev/null
 
         eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml)"
 

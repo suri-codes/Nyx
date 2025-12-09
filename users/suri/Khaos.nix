@@ -6,4 +6,8 @@
   nyx.zsh.enable = true;
   nyx.zellij.enable = true;
 
+  home.sessionVariables = {
+    COLORTERM = "truecolor";
+  };
+
 }
