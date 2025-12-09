@@ -16,19 +16,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   # Flake outputs
-  outputs = { self, darwin, nixpkgs, home-manager, rust-overlay, ... }@inputs:
-    let overlays = [ rust-overlay.overlays.default ];
-    in {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
+  outputs =
+    {
+      self,
+      darwin,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      overlays = [ ];
+    in
+    {
       # `sudo nixos-rebuild switch --flake .#Khaos`
       nixosConfigurations = {
         Khaos = nixpkgs.lib.nixosSystem {
@@ -38,9 +40,8 @@
           };
           modules = [
             ./hosts/Khaos
-
-            { nixpkgs.overlays = overlays; }
             home-manager.darwinModules.home-manager
+            { nixpkgs.overlays = overlays; }
             {
               home-manager = {
                 useGlobalPkgs = true;
@@ -64,8 +65,8 @@
           };
           modules = [
             ./hosts/Daedalus
-            { nixpkgs.overlays = overlays; }
             home-manager.darwinModules.home-manager
+            { nixpkgs.overlays = overlays; }
             {
               home-manager = {
                 useGlobalPkgs = true;

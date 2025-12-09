@@ -82,16 +82,6 @@ keybind = super+down=unbind
 keybind = super+right=unbind
 # Ghostty uses super+left for text:\x01, Zellij uses it for MoveFocusOrTab left
 keybind = super+left=unbind
-# Ghostty tab navigation conflicts with Zellij GoToTab
-# keybind = super+one=unbind
-# keybind = super+two=unbind
-# keybind = super+three=unbind
-# keybind = super+four=unbind
-# keybind = super+five=unbind
-# keybind = super+six=unbind
-# keybind = super+seven=unbind
-# keybind = super+eight=unbind
-# keybind = super+nine=unbind
 
 keybind = super+digit_1=unbind
 keybind = super+digit_2=unbind
@@ -112,8 +102,5 @@ keybind = super+6=unbind
 keybind = super+7=unbind
 keybind = super+8=unbind
 keybind = super+9=unbind
-# theme = "gruvbox-material"
-# theme = GruvboxDarkHard
-# theme = Monokai Remastered
-# theme = Kanagawa Dragon
+keybind = super+f=unbind
 theme = ayu
