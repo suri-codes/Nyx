@@ -138,12 +138,15 @@
   # };
 
   # # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.suri = {
-  #   isNormalUser = true;
-  #   description = "suri";
-  #   extraGroups = [ "networkmanager" "wheel" ];
-  #   packages = with pkgs; [ ];
-  # };
+  users.users.suri = {
+    isNormalUser = true;
+    description = "suri";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
+  };
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
 
