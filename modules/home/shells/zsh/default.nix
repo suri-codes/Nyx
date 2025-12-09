@@ -84,11 +84,7 @@ in {
         export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
         export PATH="/Users/suri/.cargo/bin:$PATH"
 
-        if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-            # WE USE ${pkgs.oh-my-posh} HERE
-            # This ensures we use the exact binary installed by Nix
-            eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml)"
-          fi
+        eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml)"
 
 
       '';

@@ -40,7 +40,7 @@
           };
           modules = [
             ./hosts/Khaos
-            home-manager.darwinModules.home-manager
+            home-manager.nixosModules.home-manager
             { nixpkgs.overlays = overlays; }
             {
               home-manager = {

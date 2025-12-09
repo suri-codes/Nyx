@@ -4,17 +4,17 @@ with lib;
 let
   cfg = config.nyx.zellij;
 
-  suri_zellij_session_helper =
+suri_zellij_session_helper =
     pkgs.writeShellScriptBin "suri_zellij_session_helper" ''
-      ZELLIJ_SESSIONS=$(${pkgs.zellij}/bin/zellij ls | sed 's/\x1b\[[0-9;]*m//g' | cut -d ' ' -f 1)
-      NUM_SESSIONS=$(echo "''${ZELLIJ_SESSIONS}" | wc -l )
+      ZELLIJ_SESSIONS=$(${pkgs.zellij}/bin/zellij ls | ${pkgs.gnused}/bin/sed 's/\x1b\[[0-9;]*m//g' | ${pkgs.coreutils}/bin/cut -d ' ' -f 1)
+      NUM_SESSIONS=$(${pkgs.coreutils}/bin/echo "''${ZELLIJ_SESSIONS}" | ${pkgs.coreutils}/bin/wc -l )
       if [ "''${NUM_SESSIONS}" -ge 1 ]; then
-        SESSION="$(echo "''${ZELLIJ_SESSIONS}" | ${pkgs.fzf}/bin/fzf)"
+        SESSION="$(${pkgs.coreutils}/bin/echo "''${ZELLIJ_SESSIONS}" | ${pkgs.fzf}/bin/fzf)"
         ${pkgs.zellij}/bin/zellij a ''${SESSION}
       else 
         ${pkgs.zellij}/bin/zellij attach -c
       fi
-    '';
+    '';  
 in {
 
   options.nyx.zellij = { enable = mkEnableOption "Zellij"; };
