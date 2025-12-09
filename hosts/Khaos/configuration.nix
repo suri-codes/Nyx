@@ -20,6 +20,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "Khaos"; # Define your hostname.
+  networking.networkmanager.wifi.powersave = false;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
