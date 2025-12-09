@@ -1,11 +1,22 @@
-{ pkgs, outputs, ... }: {
+{ pkgs, outputs, ... }:
+{
 
-  imports = [ ../../modules/system/fonts.nix ];
+  imports = [
+
+    ../../modules/system/fonts.nix
+
+  ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   # dont remove zellij and fzf, just trust me
-  environment.systemPackages = with pkgs; [ vim git nh zellij fzf ];
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    nh
+    zellij
+    fzf
+  ];
 
   system.primaryUser = "suri";
 
@@ -39,8 +50,11 @@
       "soduto"
       "spotify"
       "mac-mouse-fix"
+      "tailscale"
     ];
-    masApps = { "whatsapp" = 310633997; };
+    masApps = {
+      "whatsapp" = 310633997;
+    };
     onActivation = {
       autoUpdate = true;
       upgrade = true;
