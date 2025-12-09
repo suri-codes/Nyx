@@ -2,10 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -87,7 +93,7 @@
 
   ];
 
-  variables = {
+  environment.variables = {
     # for compiling openssl for nixos, should refactor into a diff file later
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
@@ -151,17 +157,15 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
-      package =
-        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
 
     # allows normal binaries to run
     nix-ld = {
       enable = true;
-      libraries = with pkgs;
-        [
+      libraries = with pkgs; [
 
-        ];
+      ];
     };
 
   };
