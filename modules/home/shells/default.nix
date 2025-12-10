@@ -6,7 +6,7 @@ let
 
   flakeDir = "${config.home.homeDirectory}/Nyx";
 
-  systemName = "$(hostname)";
+  systemName = "$(hostname -s)";
 in
 {
   imports = [
