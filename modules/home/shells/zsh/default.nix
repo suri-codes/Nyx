@@ -39,13 +39,9 @@ in
       shellAliases = {
         darl = "sudo darwin-rebuild switch --flake /Users/suri/dev/dots";
         darling = ''cd /Users/suri/dev/dots && git add -A && git commit -m "." && sudo darwin-rebuild switch --flake /Users/suri/dev/dots && git push'';
-
         dots = "z ~/dev/dots";
-        fcd = ''cd "$(find ~/coding/ ~/storage/ -type d -not \( -path "*/.git/*" -o -path "*/target/*" -o -path "*/.venv/*" -o -path "*/node_modules/*" -o -path "*/venv/*" -o -path "*/build/*" -o -path "*/.*/*" \) -print 2>/dev/null | fzf)" '';
-
         l = "exa";
         ls = "exa";
-
         lg = "lazygit";
 
         cat = "bat";
