@@ -35,24 +35,6 @@ in
       enableCompletion = true;
       syntaxHighlighting.enable = true;
 
-      # TODO: these need to be fixed lmao
-      shellAliases = {
-        darl = "sudo darwin-rebuild switch --flake /Users/suri/dev/dots";
-        darling = ''cd /Users/suri/dev/dots && git add -A && git commit -m "." && sudo darwin-rebuild switch --flake /Users/suri/dev/dots && git push'';
-        dots = "z ~/dev/dots";
-        l = "exa";
-        ls = "exa";
-        lg = "lazygit";
-
-        cat = "bat";
-
-        zt = "zathura";
-
-        tars = "cd /Users/suri/dev/personal/tars/tars-tui && cargo run --release";
-
-        ezk = " /Users/suri/dev/personal/Emergence/target/release/emergence_cli";
-      };
-
       initContent = ''
         eval `ssh-agent` &> /dev/null
         ssh-add ~/.ssh/github &> /dev/null
