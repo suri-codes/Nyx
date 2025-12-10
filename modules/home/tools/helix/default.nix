@@ -1,15 +1,24 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 with lib;
-let cfg = config.nyx.helix;
-in {
+let
+  cfg = config.nyx.helix;
+in
+{
 
-  options.nyx.helix = { enable = mkEnableOption "Helix text editor"; };
+  options.nyx.helix = {
+    enable = mkEnableOption "Helix text editor";
+  };
 
   config = mkIf (cfg.enable) {
 
     # symlink files
-    home.file.".config/helix".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/Nyx/modules/home/tools/helix/helix";
+    home.file.".config/helix".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nyx/modules/home/tools/helix/helix";
 
     programs.helix = {
       enable = true;
@@ -22,7 +31,6 @@ in {
         taplo
         lua-language-server
         haskell-language-server
-        python312Packages.python-lsp-server
         typescript-language-server
         svelte-language-server
         tailwindcss-language-server

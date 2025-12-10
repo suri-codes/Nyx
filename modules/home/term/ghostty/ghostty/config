@@ -2,33 +2,11 @@ initial-command = "/etc/profiles/per-user/suri/bin/suri_zellij_session_helper"
 
 custom-shader = ./shaders/cursor_blaze.glsl
 
-# custom-shader = ./shaders/starfield-colors.glsl
-
-# funny 
-# custom-shader = ./shaders/bettercrt.glsl 
-
-# Im hacker
-# custom-shader = ./shaders/inside-the-matrix.glsl 
-
-
-# really cool
-# custom-shader = ./shaders/glow-rgbsplit-twitchy.glsl
-# custom-shader = ./shaders/glow.glsl
-# custom-shader = ./shaders/tunnel.glsl
-
-# custom-shader-animation = always
-
 font-family = ""
-
 font-family = "Monaspace Krypton SemiBold"
-
 font-family-bold = "Monaspace Neon SemiBold"
-
 font-family-italic = "Monaspace Argon SemiBold"
-
 font-family-bold-italic = "Monaspace Neon SemiBold"
-
-cursor-style = "bar"
 
 font-feature = "calt"
 font-feature = "clig"
@@ -45,24 +23,13 @@ font-feature = "ss08"
 
 font-size = "14"
 
+cursor-style = "bar"
+
 mouse-hide-while-typing = true
-
-# background-opacity = 0.8
-
-# background-blur = true
 
 window-padding-x = 5,5
 
 window-padding-y = 5,5
-
-# window-decoration = false
-
-# Disable conflicting Ghostty defaults to allow Zellij keybinds
-
-
-# keybind = clear
-
-# keybind = super+shift+,=reload
 
 # Ghostty uses super+k for clear_screen, Zellij uses it for MoveFocus up
 keybind = super+k=unbind
@@ -70,6 +37,7 @@ keybind = super+d=unbind
 keybind = super+t=unbind
 # Ghostty uses super+n for new_window, Zellij uses it for NewPane
 keybind = super+n=unbind
+keybind = ctrl+alt+shift+super+n=new_window
 # Ghostty uses super+left_bracket for goto_split:previous, Zellij uses Super+[ for PreviousSwapLayout
 keybind = super+left_bracket=unbind
 # Ghostty uses super+right_bracket for goto_split:next, Zellij uses Super+] for NextSwapLayout
