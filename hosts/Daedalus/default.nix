@@ -49,7 +49,7 @@
       "soduto"
       "spotify"
       "mac-mouse-fix"
-      "tailscale"
+      "tailscale-app"
     ];
     masApps = {
       "whatsapp" = 310633997;
