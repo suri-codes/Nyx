@@ -48,6 +48,7 @@
       "zoom"
       "soduto"
       "spotify"
+      "zotero"
       "mac-mouse-fix"
       "tailscale-app"
     ];

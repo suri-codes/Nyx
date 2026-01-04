@@ -28,6 +28,7 @@
     just
     typst
     tokei
+    libqalculate
 
   ];
 
