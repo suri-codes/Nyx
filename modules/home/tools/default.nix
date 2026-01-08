@@ -13,6 +13,7 @@
   }\${LIBRARY_PATH:+:$LIBRARY_PATH}";
 
   home.packages = with pkgs; [
+    jujutsu
 
     ripgrep
     bat
