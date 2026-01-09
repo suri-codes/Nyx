@@ -73,6 +73,8 @@ in
 
         export PATH="/Users/suri/.cargo/bin:$PATH" &> /dev/null
 
+        source <(COMPLETE=zsh jj)
+
         eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml)"
 
 

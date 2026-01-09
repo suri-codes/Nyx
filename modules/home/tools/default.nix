@@ -27,7 +27,6 @@
     dust
     glow
     just
-    typst
     tokei
     libqalculate
 
