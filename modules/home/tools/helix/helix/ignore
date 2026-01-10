@@ -11,3 +11,5 @@
 !examples/*
 !inputs/*
 target/
+node_modules/
+build/

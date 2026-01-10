@@ -30,6 +30,12 @@
     tokei
     libqalculate
 
+    #NOTE: remove after memori
+    rustup
+    bun
+    nodejs
+    espflash
+
   ];
 
 }
