@@ -74,8 +74,6 @@ tell application "Calendar"
     activate
     delay 0.8
 end tell
-'
-
 '''
 ]
 
@@ -211,12 +209,12 @@ automatically-unhide-macos-hidden-apps = false
     alt-0 = 'workspace 10'
     # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
     alt-b = 'workspace B' # browser (zen)
-    # alt-c = 'workspace C'
+    alt-c = 'workspace C' # calendar
     alt-d = 'workspace D' # discord
     alt-e = 'workspace E' # emergence
     # alt-f = 'workspace F'
     # alt-g = 'workspace G'
-    # alt-i = 'workspace I'
+    alt-i = 'workspace I' # Zed (IDE)
     alt-m = 'workspace M' # mail
     # alt-n = 'workspace N'
     # alt-o = 'workspace O'
@@ -308,6 +306,7 @@ automatically-unhide-macos-hidden-apps = false
 
 S = 1
 C = 1
+I = 1
 
 D = 3
 M = 3
@@ -347,6 +346,10 @@ B = 2
 [[on-window-detected]]
     if.app-id = 'com.apple.iCal'
     run = ['move-node-to-workspace C']
+
+[[on-window-detected]]
+    if.app-id = 'com.zed.Zed'
+    run = ['move-node-to-workspace I']
 
 [[on-window-detected]]
     if.window-title-regex-substring = '(?i)emergence'
