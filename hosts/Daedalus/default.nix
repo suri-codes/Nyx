@@ -51,6 +51,8 @@
       "zotero"
       "mac-mouse-fix"
       "tailscale-app"
+      "GrandPerspective"
+      "zathura"
     ];
     masApps = {
       "whatsapp" = 310633997;
