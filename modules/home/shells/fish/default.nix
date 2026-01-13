@@ -140,7 +140,7 @@ in
 
           typst watch "$input_file" "$output_file" &  # Watch and compile Typst file
           sleep 1  # Give Typst some time to generate the PDF
-          zathura "$output_file"  # Open the generated PDF
+          open "$output_file"  # Open the generated PDF
         '';
       };
     };

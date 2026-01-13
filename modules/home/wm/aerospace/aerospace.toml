@@ -69,6 +69,11 @@ tell application "Spotify"
     activate
     delay 0.8
 end tell
+
+tell application "Calendar"
+    activate
+    delay 0.8
+end tell
 '
 
 '''
@@ -302,6 +307,7 @@ automatically-unhide-macos-hidden-apps = false
 10 = 1
 
 S = 1
+C = 1
 
 D = 3
 M = 3
@@ -337,6 +343,10 @@ B = 2
 [[on-window-detected]]
     if.app-id = 'com.mitchellh.ghostty'
     run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = ['move-node-to-workspace C']
 
 [[on-window-detected]]
     if.window-title-regex-substring = '(?i)emergence'
