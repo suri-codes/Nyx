@@ -21,6 +21,7 @@
 
   homebrew = {
     enable = true;
+
     brews = [
       "sketchybar"
       "mas"
@@ -52,7 +53,7 @@
       "mac-mouse-fix"
       "tailscale-app"
       "GrandPerspective"
-      "zathura"
+      "skim"
     ];
     masApps = {
       "whatsapp" = 310633997;
