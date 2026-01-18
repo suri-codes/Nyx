@@ -306,7 +306,6 @@ automatically-unhide-macos-hidden-apps = false
 
 S = 1
 C = 1
-I = 1
 
 D = 3
 M = 3
@@ -314,6 +313,7 @@ Z = 3
 
 T = 2
 B = 2
+I = 2
 
 [[on-window-detected]]
     if.app-id = 'app.zen-browser.zen'
