@@ -39,12 +39,20 @@ in
         eval `ssh-agent` &> /dev/null
         ssh-add ~/.ssh/github &> /dev/null
 
+
+        # need to do this stupid fucking shit for xcode, remove it later
+        export PATH="/etc/profiles/per-user/suri/bin/bun:$PATH"
+        export PATH="/etc/profiles/per-user/suri/bin/zoxide:$PATH"
+        export PATH="/etc/profiles/per-user/suri/bin/jj:$PATH"
+
+
+
         eval "$(zoxide init zsh)"
         # eval "$(starship init zsh)"
         ${lib.optionalString pkgs.stdenv.isDarwin ''
           if [ -f /opt/homebrew/bin/brew ]; then
             eval "$(/opt/homebrew/bin/brew shellenv)"
-            export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+            # export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
           fi
         ''}
 
@@ -72,6 +80,7 @@ in
         }
 
         export PATH="/Users/suri/.cargo/bin:$PATH" &> /dev/null
+
 
         source <(COMPLETE=zsh jj)
 

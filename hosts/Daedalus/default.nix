@@ -26,7 +26,7 @@
       "sketchybar"
       "mas"
       # terminal handling stuff
-      "libiconv"
+      # "libiconv"
       # nmcli kinda
       "ifstat"
       # spicetify stuff

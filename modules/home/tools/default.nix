@@ -8,9 +8,9 @@
     ./btop.nix
   ];
 
-  home.sessionVariables.LIBRARY_PATH = "${
-    lib.makeLibraryPath [ pkgs.libiconv ]
-  }\${LIBRARY_PATH:+:$LIBRARY_PATH}";
+  # home.sessionVariables.LIBRARY_PATH = "${
+  # lib.makeLibraryPath [ pkgs.libiconv ]
+  # }\${LIBRARY_PATH:+:$LIBRARY_PATH}";
 
   home.packages = with pkgs; [
     jujutsu

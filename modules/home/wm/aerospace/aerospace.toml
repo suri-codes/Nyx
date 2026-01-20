@@ -324,6 +324,10 @@ I = 2
     run = ['move-node-to-workspace D']
 
 [[on-window-detected]]
+    if.window-title-regex-substring = 'simulator'
+    run = ['move-node-to-workspace 0']
+
+[[on-window-detected]]
     if.app-id = 'com.spotify.client'
     run = ['move-node-to-workspace S']
 
