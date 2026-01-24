@@ -34,7 +34,6 @@
     rustup
     bun
     nodejs
-    espflash
 
   ];
 
