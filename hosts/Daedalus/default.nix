@@ -41,8 +41,8 @@
     casks = [
       "ghostty@tip"
       "db-browser-for-sqlite"
-      "zen@tip"
-      "zed@tip"
+      "zen"
+      "zed"
       "discord"
       "slack"
       "zulip"
