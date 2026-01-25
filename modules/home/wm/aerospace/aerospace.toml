@@ -363,3 +363,8 @@ I = 2
 if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
 run = ['layout floating']
+
+
+[[on-window-detected]]
+if.window-title-regex-substring = 'simulator'
+run = 'layout floating'
