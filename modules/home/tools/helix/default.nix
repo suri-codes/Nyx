@@ -40,7 +40,9 @@ in
         nil
         codebook
         markdown-oxide
+        fourmolu
         ruff
+        harper
       ];
 
     };

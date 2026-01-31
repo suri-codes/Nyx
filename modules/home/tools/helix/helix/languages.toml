@@ -29,27 +29,31 @@ args = ["--synctex-forward", "%l:%c:%f", "%p"]
 onOpenAndSave = true
 onEdit = true
 
-[language-server.codebook]
-command = "codebook"
-args = ["serve"]
 
 [language-server.gdscript]
 command = "nc"
 args = ["127.0.0.1", "6005"]
+
+[language-server.harper-ls]
+command="harper-ls"
+args = ["--stdio"]
+
+[language-server.harper-ls.config.harper-ls.linters]
+AvoidCurses = false
 
 # --- Languages ---
 
 [[language]]
 name = "typst"
 auto-format = true
-language-servers = ["tinymist"]
+language-servers = ["tinymist" ,"harper-ls"]
 
 [language.formatter]
 command = "typstyle"
 
 [[language]]
 name = "latex"
-language-servers = ["texlab", "ltex-ls-plus"]
+language-servers = ["texlab", "ltex-ls-plus","harper-ls"]
 
 [[language]]
 name = "nix"
@@ -61,7 +65,7 @@ command = "nixfmt"
 [[language]]
 name = "svelte"
 auto-format = true
-language-servers = ["svelteserver", "tailwindcss-language-server", "codebook"]
+language-servers = ["svelteserver", "tailwindcss-language-server", "harper-ls"]
 
 [language.formatter]
 command = "dprint"
@@ -69,7 +73,7 @@ args = ["fmt", "--stdin", "svelte"]
 
 [[language]]
 name = "html"
-language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+language-servers = ["vscode-html-language-server", "tailwindcss-ls","harper-ls"]
 
 [[language]]
 name = "css"
@@ -82,8 +86,19 @@ language-servers = ["gdscript"]
 
 [[language]]
 name = "rust"
-language-servers = ["rust-analyzer", "codebook"]
+language-servers = ["rust-analyzer", "harper-ls"]
 
 [[language]]
 name = "markdown"
-language-servers = ["codebook", "markdown-oxide"]
+language-servers = [ "markdown-oxide", "harper-ls"]
+
+[[language]]
+name = "haskell"
+# Optional: roots help Helix identify the project root
+roots = ["Setup.hs", "stack.yaml", "*.cabal"]
+formatter = { command = 'fourmolu' }
+# Optional: enable auto-format on save (only enabled by default for a few languages like Rust and Go)
+# auto-format = true 
+
+
+
