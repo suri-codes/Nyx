@@ -1,1 +1,6 @@
-{ pkgs, ... }: { fonts.packages = [ pkgs.monaspace ]; }
+{ pkgs, ... }:
+{
+  fonts.packages = [
+    pkgs.monaspace
+  ];
+}

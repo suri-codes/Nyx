@@ -2,11 +2,20 @@ initial-command = "/etc/profiles/per-user/suri/bin/suri_zellij_session_helper"
 
 custom-shader = ./shaders/cursor_blaze.glsl
 
-font-family = ""
-font-family = "Monaspace Krypton SemiBold"
-font-family-bold = "Monaspace Neon SemiBold"
-font-family-italic = "Monaspace Argon SemiBold"
-font-family-bold-italic = "Monaspace Neon SemiBold"
+# font-family = ""
+# font-family = "Monaspace Krypton SemiBold"
+
+font-family = "TX-02 Bold SemiCondensed"
+font-family-bold = "TX-02 ExtraBold SemiCondensed"
+font-family-italic = "TX-02 Bold SemiCondensed Oblique"
+font-family-bold-italic = "TX-02 ExtraBold SemiCondensed Oblique"
+
+# old font config, remember these have ligatures
+# font-family = ""
+# font-family = "Monaspace Krypton SemiBold"
+# font-family-bold = "Monaspace Neon SemiBold"
+# font-family-italic = "Monaspace Argon SemiBold"
+# font-family-bold-italic = "Monaspace Neon SemiBold"
 
 font-feature = "calt"
 font-feature = "clig"
@@ -21,7 +30,10 @@ font-feature = "ss06"
 font-feature = "ss07"
 font-feature = "ss08"
 
-font-size = "14"
+font-size = "16"
+
+
+
 
 cursor-style = "bar"
 
