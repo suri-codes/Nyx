@@ -6,6 +6,7 @@ end-of-line-diagnostics = "hint"
 color-modes = true
 completion-trigger-len = 1
 completion-timeout = 5
+rulers = [80]
 
 [editor.cursor-shape]
 normal = "block"

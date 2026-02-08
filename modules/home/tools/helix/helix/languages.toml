@@ -100,5 +100,10 @@ formatter = { command = 'fourmolu' }
 # Optional: enable auto-format on save (only enabled by default for a few languages like Rust and Go)
 # auto-format = true 
 
+[[language]]
+name = "jjdescription"
+file-types = [{ glob = "*.jjdescription" }]
+language-servers = ["harper-ls"]
+
 
 

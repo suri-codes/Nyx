@@ -35,6 +35,8 @@
     bun
     nodejs
 
+    opencode
+
   ];
 
 }
