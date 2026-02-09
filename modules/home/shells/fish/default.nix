@@ -45,30 +45,40 @@ in
 
       shellAliases = {
         ".." = "cd ..";
-        "..." = "cd ../..";
-        "...." = "cd ../../../";
-        "....." = "cd ../../../../";
-
-        "dots" = "cd ~/dev/dots";
-
-        "cp" = "cp -v";
-        "ddf" = "df -h";
-        "mkdir" = "mkdir -p";
-        "mv" = "mv -v";
-        "rm" = "rm -v";
       };
 
       shellAbbrs = {
-        # # cargo abbreviations
-        cb = "cargo build";
-        cc = "cargo check";
-        cdo = "cargo doc --open";
-        cr = "cargo run";
+
+        # personal abbrvs
         rr = "rm -rf";
         zh = "suri_zellij_session_helper";
 
+        # cargo abbreviations
+        cr = "cargo run";
+        cb = "cargo build";
+        cc = "cargo check";
+        cdo = "cargo doc --open";
+
         # jujutsu abbreviations
         jjn = "jj new";
+        jjd = "jj describe";
+        jje = "jj edit";
+        jjf = "jj file";
+        jjl = "jj log";
+        jjs = "jj squash";
+
+        jju = "jj undo";
+        jjr = "jj redo";
+
+        jjrb = "jj rebase";
+
+        jjbc = "jj bookmark create";
+        jjbm = "jj bookmark move";
+        jjbl = "jj bookmark list";
+
+        jjgf = "jj git fetch";
+        jjgp = "jj git push";
+
       };
 
       functions = {

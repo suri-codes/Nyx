@@ -12,7 +12,7 @@ in
   imports = [
 
     ./fish
-    
+
     ./zsh
 
   ];
@@ -26,5 +26,10 @@ in
     c = "clear";
     tars = "cd /Users/suri/dev/personal/tars/tars-tui && cargo run --release";
     ezk = " /Users/suri/dev/personal/Emergence/target/release/emergence_cli";
+    cp = "cp -v";
+    ddf = "df -h";
+    mkdir = "mkdir -p";
+    mv = "mv -v";
+    rm = "rm -v";
   };
 }
