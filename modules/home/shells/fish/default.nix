@@ -36,10 +36,11 @@ in
 
         COMPLETE=fish jj | source
 
+        function starship_transient_prompt_func
+          starship module character
+        end
         starship init fish | source
-
-        # ${pkgs.oh-my-posh}/bin/oh-my-posh init fish --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml &> /dev/null
-
+        enable_transience
       '';
 
       shellAliases = {

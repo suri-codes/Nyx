@@ -4,8 +4,6 @@
 add_newline = true
 continuation_prompt = "[▸▹ ](dimmed white)"
 
-
-
 format = """( $directory$nix_shell$container$fill$git_metrics\n)$cmd_duration\
 $hostname\
 $localip\
@@ -83,10 +81,11 @@ $openstack\
 $azure\
 $crystal\
 $custom\
+$memory_uasge\
 $status\
 $os\
 $battery\
-$time"""
+$time """
 
 [fill]
 symbol = ' '
@@ -120,13 +119,13 @@ show_always = false
 
 [directory]
 home_symbol = "~"
-truncation_length = 3
+truncation_length = 4
 truncation_symbol = "../"
 read_only = " ◈"
 use_os_path_sep = true
-style = "bold blue"
+style = "bold green"
 format = '[$path]($style)[$read_only]($read_only_style)'
-repo_root_style = 'bold blue'
+repo_root_style = 'bold green'
 repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)'
 
 [cmd_duration]
@@ -265,16 +264,19 @@ style = ""
 # deleted = "[✕](italic red)"
 
 [deno]
+disabled = true
 format = " [deno](italic) [∫ $version](green bold)"
 version_format = "${raw}"
 
 [lua]
+disabled = true
 format = " [lua](italic) [${symbol}${version}]($style)"
 version_format = "${raw}"
 symbol = "⨀ "
 style = "bold bright-yellow"
 
 [nodejs]
+disabled = true
 format = " [node](italic) [◫ ($version)](bold bright-green)"
 version_format = "${raw}"
 detect_files = ["package-lock.json", "yarn.lock"]
@@ -282,12 +284,14 @@ detect_folders = ["node_modules"]
 detect_extensions = []
 
 [python]
+disabled = true
 format = " [py](italic) [${symbol}${version}]($style)"
 symbol = "[⌉](bold bright-blue)⌊ "
 version_format = "${raw}"
 style = "bold bright-yellow"
 
 [ruby]
+disabled = true
 format = " [rb](italic) [${symbol}${version}]($style)"
 symbol = "◆ "
 version_format = "${raw}"
@@ -301,12 +305,14 @@ version_format = "${raw}"
 style = "bold red"
 
 [package]
+disabled = true
 format = " [pkg](italic dimmed) [$symbol$version]($style)"
 version_format = "${raw}"
 symbol = "◨ "
 style = "dimmed yellow italic bold"
 
 [swift]
+disabled = true
 format = " [sw](italic) [${symbol}${version}]($style)"
 symbol = "◁ "
 style = "bold bright-red"
@@ -319,26 +325,32 @@ style = "bold blue"
 symbol = "▲ "
 
 [buf]
+disabled = true
 symbol = "■ "
 format = " [buf](italic) [$symbol $version $buf_version]($style)"
 
 [c]
+disabled = true
 symbol = "ℂ "
 format = " [$symbol($version(-$name))]($style)"
 
 [cpp]
+disabled = true
 symbol = "ℂ "
 format = " [$symbol($version(-$name))]($style)"
 
 [conda]
+disabled = true
 symbol = "◯ "
 format = " conda [$symbol$environment]($style)"
 
 [pixi]
+disabled = true
 symbol = "■ "
 format = " pixi [$symbol$version ($environment )]($style)"
 
 [dart]
+disabled = true
 symbol = "◁◅ "
 format = " dart [$symbol($version )]($style)"
 
@@ -347,26 +359,32 @@ symbol = "◧ "
 format = " docker [$symbol$context]($style)"
 
 [elixir]
+disabled = true
 symbol = "△ "
 format = " exs [$symbol $version OTP $otp_version ]($style)"
 
 [elm]
+disabled = true
 symbol = "◩ "
 format = " elm [$symbol($version )]($style)"
 
 [golang]
+disabled = true
 symbol = "∩ "
 format = " go [$symbol($version )]($style)"
 
 [haskell]
+disabled = true
 symbol = "❯λ "
 format = " hs [$symbol($version )]($style)"
 
 [java]
+disabled = true
 symbol = "∪ "
 format = " java [${symbol}(${version} )]($style)"
 
 [julia]
+disabled = true
 symbol = "◎ "
 format = " jl [$symbol($version )]($style)"
 
@@ -375,6 +393,7 @@ symbol = "▪▫▪ "
 format = " mem [${ram}( ${swap})]($style)"
 
 [nim]
+disabled = true
 symbol = "▴▲▴ "
 format = " nim [$symbol($version )]($style)"
 
