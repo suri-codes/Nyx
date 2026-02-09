@@ -5,7 +5,8 @@
   imports = [ ../../modules/home ];
 
   nyx.oh-my-posh.enable = true;
-  nyx.zsh.enable = true;
+  # nyx.zsh.enable = true;
+  nyx.fish.enable = true;
   nyx.zellij.enable = true;
   nyx.helix.enable = true;
 

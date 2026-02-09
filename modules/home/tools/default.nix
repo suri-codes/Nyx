@@ -35,7 +35,7 @@
     bun
     nodejs
 
-    opencode
+    codex
 
   ];
 

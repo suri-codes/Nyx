@@ -15,6 +15,8 @@ command = "clippy"
 [language-server.texlab]
 command = "texlab"
 
+
+
 [language-server.texlab.config.texlab.build]
 onSave = true
 forwardSearchAfter = true
@@ -40,6 +42,10 @@ args = ["--stdio"]
 
 [language-server.harper-ls.config.harper-ls.linters]
 AvoidCurses = false
+
+[language-server.sourcekit-lsp]
+command = "sourcekit-lsp"
+args = ["--log-level", "info"]
 
 # --- Languages ---
 
@@ -101,9 +107,13 @@ formatter = { command = 'fourmolu' }
 # auto-format = true 
 
 [[language]]
+name = "swift"
+# roots = ["Package.swift", "Package.resolved", "*.xcodeproj", "*.xcworkspace", "project.yml"]
+language-servers = ["sourcekit-lsp"]
+
+[[language]]
 name = "jjdescription"
 file-types = [{ glob = "*.jjdescription" }]
 language-servers = ["harper-ls"]
-
 
 
