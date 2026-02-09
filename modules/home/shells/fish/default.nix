@@ -17,12 +17,6 @@ in
 
   config = mkIf (cfg.enable) {
 
-    home.packages = with pkgs; [
-      fish
-      fd
-      eza
-    ];
-
     home.file.".config/fish/conf.d/nix-env.fish".source = ./nix-fix.fish;
 
     programs.fish = {
@@ -36,9 +30,16 @@ in
         ssh-add ~/.ssh/ucsc_gitlab &> /dev/null
 
         eval "$(zoxide init fish)"
-        eval "$(starship init fish)"
 
-        enable_transience
+        direnv hook fish | source
+        set -g direnv_fish_mode eval_on_arrow 
+
+        COMPLETE=fish jj | source
+
+        starship init fish | source
+
+        # ${pkgs.oh-my-posh}/bin/oh-my-posh init fish --config ${config.home.homeDirectory}/.config/oh-my-posh/theme.toml &> /dev/null
+
       '';
 
       shellAliases = {
@@ -51,15 +52,9 @@ in
 
         "cp" = "cp -v";
         "ddf" = "df -h";
-        "etc" = "erd -H";
         "mkdir" = "mkdir -p";
         "mv" = "mv -v";
         "rm" = "rm -v";
-        "rr" = "rm -rf";
-
-        "fcd" =
-          ''cd "$(find ~/coding/ ~/storage/ -type d -not \( -path "*/.git/*" -o -path "*/target/*" -o -path "*/.venv/*" -o -path "*/node_modules/*" -o -path "*/venv/*" -o -path "*/build/*" -o -path "*/.*/*" \) -print 2>/dev/null | fzf)" '';
-
       };
 
       shellAbbrs = {
@@ -68,6 +63,8 @@ in
         cc = "cargo check";
         cdo = "cargo doc --open";
         cr = "cargo run";
+        rr = "rm -rf";
+        zh = "suri_zellij_session_helper";
 
         # jujutsu abbreviations
         jjn = "jj new";

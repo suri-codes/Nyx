@@ -86,9 +86,12 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  programs.fish.enable = true;
+
   users.users.suri = {
     name = "suri";
     home = "/Users/suri";
+    shell = pkgs.fish;
   };
 
   # The platform the configuration will be used on.

@@ -4,7 +4,8 @@
 
   imports = [ ../../modules/home ];
 
-  nyx.oh-my-posh.enable = true;
+  # nyx.oh-my-posh.enable = true;
+  nyx.starship.enable = true;
   # nyx.zsh.enable = true;
   nyx.fish.enable = true;
   nyx.zellij.enable = true;

@@ -1,12 +1,27 @@
-{ lib, home, ... }:
+{ config, lib, ... }:
+
+with lib;
+
+let
+  cfg = config.nyx.starship;
+in
 {
 
-  # programs.starship = {
-  #   enable = true;
+  options.nyx.starship = {
+    enable = mkEnableOption "Starship";
+  };
 
-  #   settings =
-  #     lib.mkForce (builtins.fromTOML (builtins.readFile ./starship.toml));
-  # };
-  # home.file.".config/starship.toml".source = lib.mkForce ./starship.toml;
+  config = mkIf (cfg.enable) {
+    programs.starship = {
+      enable = true;
+
+      # settings = lib.mkForce (fromTOML (builtins.readFile ./starship.toml));
+    };
+    home.file.".config/starship.toml".source =
+
+      config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/Nyx/modules/home/prompts/starship/starship.toml";
+
+  };
 
 }

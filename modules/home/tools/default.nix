@@ -15,6 +15,10 @@
   home.packages = with pkgs; [
     jujutsu
 
+    zoxide
+    eza
+    fd
+
     ripgrep
     bat
     fastfetch
