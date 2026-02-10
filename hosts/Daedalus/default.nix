@@ -48,7 +48,6 @@
       "zulip"
       "raycast"
       "zoom"
-      "soduto"
       "spotify"
       "zotero"
       "mac-mouse-fix"

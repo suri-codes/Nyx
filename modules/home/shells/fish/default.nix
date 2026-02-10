@@ -60,6 +60,7 @@ in
         cdo = "cargo doc --open";
 
         # jujutsu abbreviations
+        jj_ = "jj abandon";
         jjn = "jj new";
         jjd = "jj describe";
         jje = "jj edit";
@@ -71,6 +72,8 @@ in
         jjr = "jj redo";
 
         jjrb = "jj rebase";
+
+        jjdf = "jj diff";
 
         jjbc = "jj bookmark create";
         jjbm = "jj bookmark move";
