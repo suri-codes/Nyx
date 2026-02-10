@@ -55,7 +55,6 @@
       "tailscale-app"
       "GrandPerspective"
       "skim"
-      # "docker-desktop"
     ];
     masApps = {
       "whatsapp" = 310633997;
