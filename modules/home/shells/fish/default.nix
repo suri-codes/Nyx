@@ -75,6 +75,7 @@ in
         jjbc = "jj bookmark create";
         jjbm = "jj bookmark move";
         jjbl = "jj bookmark list";
+        jjbt = "jj bookmark track";
 
         jjgf = "jj git fetch";
         jjgp = "jj git push";
