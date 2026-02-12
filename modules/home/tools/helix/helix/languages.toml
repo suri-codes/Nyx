@@ -1,5 +1,4 @@
 # --- Language Servers ---
-
 [language-server.ltex]
 command = "ltex-ls-plus"
 
@@ -9,13 +8,11 @@ command = "ltex-ls-plus"
 [language-server.ltex.config.ltex.disabledRules]
 "en-US" = ["WHITESPACE_RULE"]
 
-[language-server.rust-analyzer.config.check]
-command = "clippy"
+[language-server.rust-analyzer.config]
+check.command = "clippy"
 
 [language-server.texlab]
 command = "texlab"
-
-
 
 [language-server.texlab.config.texlab.build]
 onSave = true

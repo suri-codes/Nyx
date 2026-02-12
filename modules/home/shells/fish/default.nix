@@ -54,6 +54,7 @@ in
         zh = "suri_zellij_session_helper";
 
         # cargo abbreviations
+        ca = "cargo add";
         cr = "cargo run";
         cb = "cargo build";
         cc = "cargo check";
@@ -112,8 +113,42 @@ in
           set output_file (string replace ".typ" ".pdf" -- $input_file)
 
           typst watch "$input_file" "$output_file" &  # Watch and compile Typst file
+          disown
           sleep 1  # Give Typst some time to generate the PDF
           open "$output_file"  # Open the generated PDF
+        '';
+
+        # init a dev template
+        dti = ''
+          set lang $argv[1]
+
+          if test (count $argv) -eq 0
+              echo "Usage: dti <template-name>"
+              return 1
+          end
+
+          nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$lang"
+          jj git init
+          jj describe -m "feat: Init"
+        '';
+
+        # create a new dev template project
+        dtn = ''
+
+          if test (count $argv) -eq 0 
+              echo "Usage: dtn <proj_dir> <template-name>"
+              return 1
+          end
+
+          set proj_dir $argv[1]
+          set lang $argv[2]
+
+          nix flake new --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$lang" $proj_dir
+          cd $proj_dir
+          jj git init
+          jj describe -m "feat: Init $proj_dir"
+
+
         '';
       };
     };

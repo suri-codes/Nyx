@@ -54,6 +54,8 @@
       "tailscale-app"
       "GrandPerspective"
       "skim"
+
+      "kicad"
     ];
     masApps = {
       "whatsapp" = 310633997;
@@ -61,7 +63,7 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap";
+      # cleanup = "zap";
     };
   };
 
