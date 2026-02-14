@@ -39,6 +39,8 @@ args = ["--stdio"]
 
 [language-server.harper-ls.config.harper-ls.linters]
 AvoidCurses = false
+ToDoHyphen = false
+
 
 [language-server.sourcekit-lsp]
 command = "sourcekit-lsp"

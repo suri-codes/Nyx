@@ -61,7 +61,7 @@ in
         cdo = "cargo doc --open";
 
         # jujutsu abbreviations
-        jj_ = "jj abandon";
+        jja = "jj abandon";
         jjn = "jj new";
         jjd = "jj describe";
         jje = "jj edit";
