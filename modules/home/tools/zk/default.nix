@@ -3,6 +3,7 @@
   lib,
   ...
 }:
+
 {
 
   programs.zk = {
@@ -10,6 +11,6 @@
   };
 
   home.file.".config/zk/config.toml".source =
-    lib.file.MkOutOfStoreSymlink "${config.home.HomeDirectory}/Nyx/modules/home/tools/zk/config.toml";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.HomeDirectory}/Nyx/modules/home/tools/zk/config.toml";
 
 }
