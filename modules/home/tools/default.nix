@@ -4,8 +4,10 @@
   imports = [
     ./helix
     ./zellij
+    ./zk
     ./git.nix
     ./btop.nix
+
   ];
 
   # home.sessionVariables.LIBRARY_PATH = "${
