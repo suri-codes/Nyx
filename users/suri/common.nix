@@ -10,6 +10,7 @@
   nyx.fish.enable = true;
   nyx.zellij.enable = true;
   nyx.helix.enable = true;
+  nyx.zk.enable = true;
 
   programs.direnv = {
     enable = true;

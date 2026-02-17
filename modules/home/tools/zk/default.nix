@@ -6,7 +6,7 @@
 
 with lib;
 let
-  cfg = config.nyx.oh-my-posh;
+  cfg = config.nyx.zk;
 in
 {
   options.nyx.zk = {
@@ -20,8 +20,10 @@ in
       enable = true;
     };
 
-    home.file.".config/zk/config.toml".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.HomeDirectory}/Nyx/modules/home/tools/zk/config.toml";
+    home.file.".config/zk/config.toml".text = ''
+      [notebook]
+      dir = "~/dev/personal/meditations"
+    '';
 
   };
 

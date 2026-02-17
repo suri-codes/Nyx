@@ -10,6 +10,7 @@
 !puzzles/*
 !examples/*
 !inputs/*
+!.zk/
 target/
 node_modules/
 build/

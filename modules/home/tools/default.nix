@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 {
 
   imports = [
@@ -40,8 +44,6 @@
     rustup
     bun
     nodejs
-
-    codex
 
   ];
 

@@ -14,6 +14,10 @@ check.command = "clippy"
 [language-server.texlab]
 command = "texlab"
 
+[language-server.zk]
+command = "zk"
+args = ["lsp"]
+
 [language-server.texlab.config.texlab.build]
 onSave = true
 forwardSearchAfter = true
@@ -47,6 +51,12 @@ command = "sourcekit-lsp"
 args = ["--log-level", "info"]
 
 # --- Languages ---
+
+[[language]]
+name = "markdown"
+roots = [".zk"]
+language-servers = ["zk", "harper-ls"]
+
 
 [[language]]
 name = "typst"
@@ -93,9 +103,6 @@ language-servers = ["gdscript"]
 name = "rust"
 language-servers = ["rust-analyzer", "harper-ls"]
 
-[[language]]
-name = "markdown"
-language-servers = [ "markdown-oxide", "harper-ls"]
 
 [[language]]
 name = "haskell"

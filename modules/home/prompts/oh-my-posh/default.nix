@@ -18,9 +18,7 @@ in
     home.packages = [ pkgs.oh-my-posh ];
 
     home.file.".config/oh-my-posh/theme.toml".source =
-      config.lib.file.mkOutOfStoreSymlink
-
-        "${config.home.homeDirectory}/Nyx/modules/home/prompts/oh-my-posh/mypure.omp.toml";
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nyx/modules/home/prompts/oh-my-posh/mypure.omp.toml";
   };
 
 }
