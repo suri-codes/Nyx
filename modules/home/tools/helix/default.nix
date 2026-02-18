@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  helix,
   ...
 }:
 with lib;
@@ -22,9 +23,10 @@ in
 
     programs.helix = {
       enable = true;
+      # building helix from source
+      package = helix.packages.${pkgs.system}.default;
       defaultEditor = true;
       extraPackages = with pkgs; [
-        # markdown-oxide
         gopls
         nil
         texlab
@@ -38,7 +40,6 @@ in
         ltex-ls
         nixd
         nil
-        codebook
         markdown-oxide
         fourmolu
         ruff

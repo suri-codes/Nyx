@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helix.url = "github:helix-editor/helix";
+
   };
 
   # Flake outputs
@@ -23,6 +25,7 @@
       self,
       darwin,
       nixpkgs,
+      helix,
       home-manager,
       ...
     }@inputs:
@@ -47,6 +50,10 @@
                 useUserPackages = true;
                 users.suri = import ./users/suri/Khaos.nix;
                 backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  # <-- add this
+                  helix = helix;
+                };
               };
             }
 
@@ -72,6 +79,10 @@
                 useUserPackages = true;
                 users.suri = import ./users/suri/Daedalus.nix;
                 backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  # <-- add this
+                  helix = helix;
+                };
               };
             }
           ];
